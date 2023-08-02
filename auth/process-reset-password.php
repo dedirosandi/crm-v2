@@ -79,7 +79,7 @@ try {
     $_SESSION["notification_color"] = "green";
 
     // Redirect ke halaman reset-password.php
-    header("location: ../reset-password");
+    header("location: ../");
     exit;
 } catch (Exception $e) {
     // Jika terjadi error dalam pengiriman email, tampilkan pesan kesalahan
