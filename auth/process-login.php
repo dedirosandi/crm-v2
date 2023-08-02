@@ -2,6 +2,21 @@
 // Memulai session
 session_start();
 
+if (empty($_POST["email"]) && empty($_POST["password"])) {
+    $_SESSION["notification"] = "Email & Password harus diisi.";
+    $_SESSION["notification_color"] = "red";
+    header("location: ../");
+    exit;
+}
+
+$email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
+if (!$email) {
+    $_SESSION["notification"] = "Format email tidak valid.";
+    $_SESSION["notification_color"] = "red";
+    header("location: ../");
+    exit;
+}
+
 // Jika form login telah dikirim
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     require_once "../env/connection.php";

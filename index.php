@@ -31,7 +31,7 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] === "login") {
                     <h1 class="auth-title">Log in. CRM</h1>
                     <form action="auth/process-login.php" method="post">
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="email" name="email" class="form-control form-control-xl" placeholder="Email">
+                            <input type="text" name="email" class="form-control form-control-xl" placeholder="Email">
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
