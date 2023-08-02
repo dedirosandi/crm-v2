@@ -27,25 +27,19 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] === "login") {
     <div id="auth">
         <div class="row h-100">
             <div class="col-lg-5 col-12">
-                <div id="auth-left">
-                    <h1 class="auth-title">Log in. CRM</h1>
-                    <form action="auth/process-login.php" method="post">
+                <div id="auth-left-reset">
+                    <h1 class="auth-title">Reset password</h1>
+                    <form action="auth/process-reset-password.php" method="post">
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="email" name="email" class="form-control form-control-xl" placeholder="Email">
+                            <input type="email" name="email" class="form-control form-control-xl" placeholder="Enter email">
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
                         </div>
-                        <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" name="password" class="form-control form-control-xl" placeholder="Password">
-                            <div class="form-control-icon">
-                                <i class="bi bi-shield-lock"></i>
-                            </div>
-                        </div>
                         <div class="form-group position-relative">
-                            <a href="reset-password">Reset Password ?</a>
+                            <a href="/">Login ?</a>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-2">Log in</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-2">Reset Now</button>
                     </form>
                 </div>
             </div>
@@ -57,7 +51,6 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] === "login") {
         </div>
 
     </div>
-
     <?php
     // Tampilkan notifikasi jika ada
     if (isset($_SESSION["notification"])) {

@@ -16,8 +16,12 @@ body {
     padding: 11rem 8rem
 }
 
+#auth #auth-left-reset {
+    padding: 17rem 8rem
+}
+
 #auth #auth-left .auth-title {
-    font-size: 4rem;
+    font-size: 2rem;
     margin-bottom: 1rem
 }
 
