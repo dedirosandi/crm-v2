@@ -31,6 +31,7 @@ $result = mysqli_fetch_assoc($check);
 if (!$result) {
     $_SESSION["notification"] = "Email tidak terdaftar.";
     $_SESSION["notification_color"] = "red";
+    $_SESSION['email'] = $email;
     header("location: ../reset-password");
     exit;
 }
@@ -85,6 +86,7 @@ try {
     // Jika terjadi error dalam pengiriman email, tampilkan pesan kesalahan
     $_SESSION["notification"] = "Gagal mengirim email: " . $mail->ErrorInfo;
     $_SESSION["notification_color"] = "red";
+    $_SESSION['email'] = $email;
     header("location: ../reset-password");
     exit;
 }
