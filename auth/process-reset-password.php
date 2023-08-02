@@ -61,7 +61,7 @@ try {
     $mail->addAddress($email, $result['name']); // Menggunakan nama dari database
 
     // Subjek email
-    $mail->Subject = 'Reset Password';
+    $mail->Subject = "Reset Password akun" . $result['name'];
 
     // Isi email
     $mail->Body = "Password baru Anda: $passwordBaru";
