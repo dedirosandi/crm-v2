@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 // Tampilkan notifikasi menggunakan session
                 $_SESSION["notification"] = "Akun anda sudah tidak aktif !!!";
                 $_SESSION["notification_color"] = "red";
+                $_SESSION['email'] = $email;
                 header("location:../");
                 exit;
             } elseif ($status_is === "1") {
@@ -55,6 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Tampilkan notifikasi menggunakan session
             $_SESSION["notification"] = "Password anda salah !!!";
             $_SESSION["notification_color"] = "red";
+            $_SESSION['email'] = $email;
             header("location:../");
             exit;
         }
@@ -62,11 +64,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Tampilkan notifikasi menggunakan session
         $_SESSION["notification"] = "Email anda tidak terdaftar !!!";
         $_SESSION["notification_color"] = "red";
+        $_SESSION['email'] = $email;
         header("location:../");
         exit;
     }
 } else {
     // Jika form login tidak dikirimkan, redirect kembali ke halaman login
+    $_SESSION['email'] = $email;
     header("location:../");
     exit;
 }
