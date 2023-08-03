@@ -38,7 +38,7 @@
                      <span>Dashboard</span>
                  </a>
              </li>
-             <li class="sidebar-item <?php if ($_GET['pages'] == "unit") { ?> active <?php } else { ?> <?php } ?>">
+             <li class="sidebar-item <?php if ($_GET['pages'] == "unit" && "create-unit") { ?> active <?php } else { ?> <?php } ?>">
                  <a href="?pages=unit" class='sidebar-link'>
                      <i class="bi bi-house-fill"></i>
                      <span>Unit</span>

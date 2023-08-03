@@ -22,6 +22,9 @@ $title = "Unit";
         <div class="row">
             <div class="col-12">
                 <div class="card">
+                    <div class="card-header">
+                        <a href="?pages=unit&act=create" class="btn btn-outline-success"> Tambah Unit</a>
+                    </div>
                     <div class="card-body">
                         <div class="row gallery">
                             <?php
