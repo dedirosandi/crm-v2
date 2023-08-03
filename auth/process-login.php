@@ -33,23 +33,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $user_is = $result["user_is"];
             $status_is = $result["status_is"];
 
-            $_SESSION["id"] = $id;
-            $_SESSION["email"] = $email;
-            $_SESSION["user_is"] = $user_is;
-            $_SESSION["login"] = "login";
-
-            if ($status_is === "0") {
+            if ($status_is === '0') {
                 // Tampilkan notifikasi menggunakan session
                 $_SESSION["notification"] = "Akun anda sudah tidak aktif !!!";
                 $_SESSION["notification_color"] = "red";
                 $_SESSION['email'] = $email;
                 header("location:../");
                 exit;
-            } elseif ($status_is === "1") {
+            } elseif ($status_is === '1') {
                 // Tampilkan notifikasi menggunakan session
-                $_SESSION["notification"] = "Login Berhasil";
+                $_SESSION["id"] = $id;
+                $_SESSION["email"] = $email;
+                $_SESSION["user_is"] = $user_is;
+                $_SESSION["login"] = "login";
+                $_SESSION["notification"] = "Anda berhaslil login !!!";
                 $_SESSION["notification_color"] = "green";
-                header("location:../dashboard");
+                header("location:../dashboard/");
                 exit;
             }
         } else {
