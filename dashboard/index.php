@@ -103,20 +103,13 @@ if (isset($_GET['title'])) {
     <script>
         function showConfirmation() {
             Swal.fire({
+                title: 'Konfirmasi',
                 text: 'Anda yakin ingin logout?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Ya, Logout',
                 cancelButtonText: 'Batal',
-                reverseButtons: true,
-                customClass: {
-                    container: 'my-swal-container',
-                    popup: 'my-swal-popup',
-                    header: 'my-swal-header',
-                    title: 'my-swal-title',
-                    cancelButton: 'my-swal-cancel-button',
-                    confirmButton: 'my-swal-confirm-button'
-                }
+                reverseButtons: true
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Jika pengguna menekan tombol "Ya, Logout", submit form logout
