@@ -15,7 +15,7 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] === "login") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login CRM</title>
+    <title>Reset Password</title>
     <link rel="stylesheet" href="assets/css/main/app.css">
     <link rel="stylesheet" href="assets/css/pages/auth.css">
     <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
@@ -37,7 +37,7 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] === "login") {
                             </div>
                         </div>
                         <div class="form-group position-relative">
-                            <a href="/">Login ?</a>
+                            <a href="/">Back to Login ?</a>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-2">Reset Now</button>
                     </form>
