@@ -37,7 +37,15 @@ if (!$result) {
 }
 
 // Generate password baru (tanpa enkripsi)
-$passwordBaru = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", 8)), 0, 8);
+// Karakter yang ingin Anda tambahkan ke dalam pool karakter yang digunakan
+$additionalCharacters = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+// Pool karakter yang digunakan untuk mengacak password
+$characterPool = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" . $additionalCharacters;
+
+// Mengacak karakter dari pool
+$passwordBaru = substr(str_shuffle(str_repeat($characterPool, 8)), 0, 8);
+
 
 // Kirim email dengan password baru menggunakan PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
