@@ -394,6 +394,7 @@
                      <i class="bi bi-cash"></i>
                      <span>Donate</span>
                  </a>
+
              </li>
 
          </ul>

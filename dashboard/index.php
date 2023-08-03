@@ -33,6 +33,7 @@ if (isset($_GET['title'])) {
     <link rel="shortcut icon" href="../assets/images/logo/favicon.png" type="image/png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="../assets/css/shared/iconly.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
 
 </head>
 
@@ -99,6 +100,33 @@ if (isset($_GET['title'])) {
         unset($_SESSION["notification_color"]);
     }
     ?>
+    <script>
+        function showConfirmation() {
+            Swal.fire({
+                text: 'Anda yakin ingin logout?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, Logout',
+                cancelButtonText: 'Batal',
+                reverseButtons: true,
+                customClass: {
+                    container: 'my-swal-container',
+                    popup: 'my-swal-popup',
+                    header: 'my-swal-header',
+                    title: 'my-swal-title',
+                    cancelButton: 'my-swal-cancel-button',
+                    confirmButton: 'my-swal-confirm-button'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Jika pengguna menekan tombol "Ya, Logout", submit form logout
+                    document.getElementById('logout-form').submit();
+                }
+            });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
 </body>
 

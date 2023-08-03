@@ -199,16 +199,10 @@ $title = "Main";
         </div>
         <div class="col-12 col-lg-3">
             <div class="card">
-                <div class="card-body py-4 px-4">
-                    <div class="d-flex align-items-center">
-                        <div class="avatar avatar-xl">
-                            <img src="../assets/images/faces/1.jpg" alt="Face 1">
-                        </div>
-                        <div class="ms-3 name">
-                            <h5 class="font-bold">John Duck</h5>
-                            <h6 class="text-muted mb-0">@johnducky</h6>
-                        </div>
-                    </div>
+                <div class="px-4 py-4">
+                    <form id="logout-form" action="../auth/logout" method="post">
+                        <input class='btn btn-block btn-lg btn-danger' type="button" value="Logout" onclick="showConfirmation()">
+                    </form>
                 </div>
             </div>
             <div class="card">
