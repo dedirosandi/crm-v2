@@ -7,11 +7,11 @@ switch ($pages) {
     case "":
         include "pages/main/index.php";
         break;
-    case "data":
+    case "unit":
         if ($act == "") {
-            include "pages/data/view/view-data.php";
-        } else if ($act == "tambah-data") {
-            include "pages/data/view/view-tambah-data.php";
+            include "pages/unit/index.php";
+        } else if ($act == "create") {
+            include "pages/unit/create.php";
         }
         break;
     default:
