@@ -106,11 +106,10 @@ if (isset($_GET['title'])) {
     <script>
         function showConfirmation() {
             Swal.fire({
-                title: 'Konfirmasi',
-                text: 'Anda yakin ingin logout?',
+                text: 'Anda yakin ?',
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Ya, Logout',
+                confirmButtonText: 'Ya',
                 cancelButtonText: 'Batal',
                 reverseButtons: true
             }).then((result) => {

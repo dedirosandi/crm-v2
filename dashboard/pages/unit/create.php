@@ -29,38 +29,38 @@ $title = "Form Tambah Unit";
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form form-horizontal">
+                            <form action="?pages=unit&act=create-process" method="post" class="form form-horizontal">
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-lg-3">
                                             <label>Tipe Unit</label>
                                         </div>
                                         <div class="col-lg-9 form-group">
-                                            <input type="text" id="first-name" class="form-control" name="fname">
+                                            <input type="text" class="form-control" name="type" required>
                                         </div>
                                         <div class="col-lg-3">
                                             <label>Blok Unit</label>
                                         </div>
                                         <div class="col-lg-9 form-group">
-                                            <input type="text" id="first-name" class="form-control" name="fname">
+                                            <input type="text" class="form-control" name="block" required>
                                         </div>
                                         <div class="col-lg-3">
                                             <label>Lokasi Unit</label>
                                         </div>
                                         <div class="col-lg-9 form-group">
-                                            <input type="text" id="first-name" class="form-control" name="fname">
+                                            <input type="text" class="form-control" name="location" required>
                                         </div>
                                         <div class="col-lg-3">
                                             <label>Kelebihan Lahan</label>
                                         </div>
                                         <div class="col-lg-9 form-group">
-                                            <input type="text" id="first-name" class="form-control" name="fname">
+                                            <input type="text" class="form-control" name="excess_land" required>
                                         </div>
                                         <div class="col-lg-3">
                                             <label>Stok Unit</label>
                                         </div>
                                         <div class="col-lg-9 form-group">
-                                            <input type="text" id="first-name" class="form-control" name="fname">
+                                            <input type="number" class="form-control" name="unit_stock" required>
                                         </div>
 
 
