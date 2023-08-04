@@ -28,18 +28,25 @@ $title = "Unit";
                     <div class="card-body">
                         <div class="row gallery">
                             <?php
-                            $GetUnit = query("SELECT * FROM tb_unit INNER JOIN tb_unit_gallery ON tb_unit.id = tb_unit_gallery.unit_is");
-
+                            $GetUnit = query("SELECT * FROM tb_unit LEFT JOIN tb_unit_gallery ON tb_unit.id = tb_unit_gallery.unit_is");
                             foreach ($GetUnit as $unit) {
                                 $status = $unit["status"];
                                 $imageUrl = $unit["image"];
                                 $iconImage = ($status === "sold") ? "sold.png" : "";
+                                $dummyImageUrl = "../assets/images/img/no-image.png"; // Ganti dengan URL gambar dummy sesuai kebutuhan
 
                             ?>
-                                <div class="col-6 col-sm-6 col-lg-3 mt-2 mt-md-0 mb-md-0 mb-2" data-bs-toggle="modal" data-bs-target="#galleryModal">
-                                    <b>Tipe Unit : <?= $unit["type"]; ?> </b>
-                                    <a href="#" class="image-container">
-                                        <img class="w-100 active rounded" src="https://images.unsplash.com/photo-1633008808000-ce86bff6c1ed?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyN3x8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" data-bs-target="#Gallerycarousel" data-bs-slide-to="0">
+                                <div class="col-6 col-sm-6 col-lg-3 mt-2 mt-md-0 mb-md-0 mb-2">
+                                    <div class="row justify-content-between mt-2 mb-2">
+                                        <div class="col-6">
+                                            <b><?= $unit["type"]; ?> </b>
+                                        </div>
+                                        <div class="col-6 col-sm-6 equal-width">
+                                            <a href="?pages=unit&act=show&id_unit=<?= $unit["id"]; ?>" class="btn btn-sm btn-success"><i class="bi bi-eye-fill"></i></a>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="image-container" data-bs-toggle="<?= empty($imageUrl) ? "" : "modal"; ?>" data-bs-target="#galleryModal">
+                                        <img class="w-100 active rounded" src="<?= empty($imageUrl) ? $dummyImageUrl : $imageUrl; ?>" data-bs-target="#Gallerycarousel" data-bs-slide-to="0">
                                         <?php if ($status === "sold") : ?>
                                             <img class="sold-icon" src="../assets/images/img/<?= $iconImage ?>" alt="Sold">
                                         <?php endif; ?>
@@ -75,6 +82,10 @@ $title = "Unit";
         /* Posisikan horizontal di tengah */
         transform: translate(-50%, -50%);
         /* Geser gambar ke tengah */
+    }
+
+    .equal-width {
+        width: 22%;
     }
 </style>
 

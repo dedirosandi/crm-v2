@@ -21,6 +21,24 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] === "login") {
     <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <style>
+        .form-control:focus {
+            outline: none;
+            box-shadow: none;
+            /* Menghapus garis tepi (outline) saat elemen input mendapatkan fokus */
+        }
+
+        .form-control {
+            border: none;
+            /* Menghapus batas pada elemen input */
+            border-bottom: 1px solid #ccc;
+            /* Menambahkan garis bawah pada elemen input */
+            border-radius: 0;
+            /* (Opsional) Menghapus border-radius untuk tampilan yang lebih lurus */
+            padding: 5px 0;
+            /* (Opsional) Atur jarak atas dan bawah agar lebih rapi */
+        }
+    </style>
 </head>
 
 <body>
@@ -39,7 +57,7 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] === "login") {
                         <div class="form-group position-relative">
                             <a href="/">Back to Login ?</a>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-2">Reset Now</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-lg mt-2">Reset Now</button>
                     </form>
                 </div>
             </div>
