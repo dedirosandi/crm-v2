@@ -48,7 +48,7 @@ $title = "Unit";
                                     <a href="#" class="image-container" data-bs-toggle="<?= empty($imageUrl) ? "" : "modal"; ?>" data-bs-target="#galleryModal">
                                         <img height="500px" width="333px" class="active rounded" src="<?= empty($imageUrl) ? $dummyImageUrl : $imageUrl; ?>" data-bs-target="#Gallerycarousel" data-bs-slide-to="0">
                                         <?php if ($status === "sold") : ?>
-                                            <img class="sold-icon" src="../assets/images/img/<?= $iconImage ?>" alt="Sold">
+                                            <img height="500px" width="333px" class="sold-icon" src="../assets/images/img/<?= $iconImage ?>" alt="Sold">
                                         <?php endif; ?>
                                     </a>
                                 </div>
