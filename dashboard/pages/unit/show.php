@@ -65,7 +65,7 @@ $GetUnit = query("SELECT tb_unit.*, COALESCE(tb_unit_gallery.id, '') AS gallery_
 
 
                             </div>
-                            <div class="col-4" style="overflow-y: scroll; height: 450px;">
+                            <div class="col-4 rounded" style="overflow-y: scroll; height: 670px;">
                                 <div class="row">
                                     <div class="col-12 mb-5 image-container mt-5">
                                         <button class="btn btn-success button" data-bs-toggle="modal" data-bs-target="#add-image<?= $GetUnit[0]["id"]; ?>"><i class="bi bi-plus-square-dotted"></i></button>
@@ -79,7 +79,11 @@ $GetUnit = query("SELECT tb_unit.*, COALESCE(tb_unit_gallery.id, '') AS gallery_
                                         ?>
                                             <div class="col-12 mb-3 image-container">
                                                 <img src="../storage/image-unit/<?= $data["gallery_image"] ?>" class="rounded img-thumbnail" alt="...">
-                                                <button class="btn btn-danger button"><i class="bi bi-trash-fill"></i></button>
+                                                <form id="logout-form" action="?pages=unit&act=delete-image" method="post">
+                                                    <input name="id" class="form-control form-control-lg" type="text" value="<?= $data["gallery_id"] ?>" hidden>
+                                                    <input class='btn btn-sm btn-danger button' type="button" value="Hapus" onclick="showConfirmation()">
+                                                </form>
+                                                <!-- <button class="btn btn-danger button"><i class="bi bi-trash-fill"></i></button> -->
                                             </div>
                                         <?php } else { ?>
                                             <img src="../storage/image-unit/no-image.png" class="rounded" alt="...">

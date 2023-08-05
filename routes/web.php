@@ -20,6 +20,8 @@ switch ($pages) {
             include "pages/unit/show.php";
         } else if ($act == "delete") {
             include "pages/unit/delete-process.php";
+        } else if ($act == "delete-image") {
+            include "pages/unit/delete-image-process.php";
         }
         break;
     default:
