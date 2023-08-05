@@ -44,7 +44,8 @@ $title = "Unit";
                                             <b><?= $unit["type"]; ?> </b>
                                         </div>
                                         <div class="col-6 col-sm-6 equal-width">
-                                            <form id="logout-form" action="?pages=unit&act=delete-process&unit_is=<?= $unit["id"]; ?>" method="post">
+                                            <form id="logout-form" action="?pages=unit&act=delete" method="post">
+                                                <input name="unit_is" class="form-control form-control-lg" type="text" value="<?= $unit["id"]; ?>" hidden>
                                                 <input class='btn btn-block btn-sm btn-danger' type="button" value="X" onclick="showConfirmation()">
                                             </form>
                                         </div>
