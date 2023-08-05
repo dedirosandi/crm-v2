@@ -3,6 +3,7 @@
 <?php
 // Memulai session
 session_start();
+require_once 'env/token.php';
 
 // Cek apakah pengguna sudah login (sesi login aktif)
 if (isset($_SESSION["login"]) && $_SESSION["login"] === "login") {
@@ -48,6 +49,8 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] === "login") {
                 <div id="auth-left">
                     <h1 class="auth-title">Log in. CRM</h1>
                     <form action="auth/process-login.php" method="post">
+                        <input type="hidden" name="token" value="<?= generateToken(); ?>">
+
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="text" name="email" class="form-control form-control-xl" placeholder="Email" value="<?= isset($_SESSION['email']) ? htmlspecialchars($_SESSION['email']) : ''; ?>">
                             <div class="form-control-icon">

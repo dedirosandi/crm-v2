@@ -1,6 +1,8 @@
 <?php
 // Memulai session
 session_start();
+require_once "../env/connection.php";
+require_once "../env/token.php";
 
 if (empty($_POST["email"]) && empty($_POST["password"])) {
     $_SESSION["notification"] = "Email & Password harus diisi.";
@@ -19,12 +21,20 @@ if (!$email) {
 
 // Jika form login telah dikirim
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    require_once "../env/connection.php";
+
+    if (!isset($_SESSION['token']) || !hash_equals($_SESSION['token'], $_POST["token"])) {
+        $_SESSION["notification"] = "Token tidak valid.";
+        $_SESSION["notification_color"] = "red";
+        header("location: ../");
+        exit;
+    }
 
     $email = mysqli_escape_string($koneksi, $_POST["email"]);
     $password = mysqli_escape_string($koneksi, $_POST["password"]);
     $check = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE email = '$email'");
     $result = mysqli_fetch_assoc($check);
+
+
 
     if (mysqli_num_rows($check) === 1) {
         if (password_verify($password, $result["password"])) {
