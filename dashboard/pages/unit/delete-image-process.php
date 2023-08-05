@@ -2,7 +2,7 @@
 $id = $_POST["id"];
 $GetImage = query("SELECT * FROM tb_unit_gallery WHERE id='$id'")[0];
 
-$unit_id = $GetImage["unit_is"];
+$unit_is = $GetImage["unit_is"];
 
 
 $delete_gallery = mysqli_query($koneksi, "DELETE FROM tb_unit_gallery WHERE id='$id'");
