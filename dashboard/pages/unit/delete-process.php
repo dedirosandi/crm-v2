@@ -11,8 +11,8 @@ if ($GetImage) {
     }
 }
 
-$delete_unit = query("DELETE FROM tb_unit WHERE id = '$unit_is'");
-$delete_gallery = query("DELETE FROM tb_unit_gallery WHERE unit_is='$unit_is'");
+$delete_unit = mysqli_query($koneksi, "DELETE FROM tb_unit WHERE id = '$unit_is'");
+$delete_gallery = mysqli_query($koneksi, "DELETE FROM tb_unit_gallery WHERE unit_is='$unit_is'");
 
 if ($delete_unit && $delete_gallery) {
     $_SESSION["notification"] = "Penghapusan unit berhasil !!!";
