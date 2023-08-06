@@ -44,6 +44,18 @@
                      <span>Unit</span>
                  </a>
              </li>
+             <li class="sidebar-item <?php if ($_GET['pages'] == "customer" && "create-customer") { ?> active <?php } else { ?> <?php } ?>">
+                 <a href="?pages=customer" class='sidebar-link'>
+                     <i class="bi bi-people-fill"></i>
+                     <span>Customer</span>
+                 </a>
+             </li>
+             <li class="sidebar-item <?php if ($_GET['pages'] == "user" && "create-user") { ?> active <?php } else { ?> <?php } ?>">
+                 <a href="?pages=user" class='sidebar-link'>
+                     <i class="bi bi-person-circle"></i>
+                     <span>User</span>
+                 </a>
+             </li>
          </ul>
      </div>
  </div>

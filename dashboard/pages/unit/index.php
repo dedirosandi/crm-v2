@@ -38,6 +38,7 @@ $title = "Unit";
                                 $dummyImageUrl = "no-image.png"; // Ganti dengan URL gambar dummy sesuai kebutuhan
 
                             ?>
+
                                 <div class="col-6 col-sm-6 col-lg-3 mt-2 mt-md-0 mb-md-0 mb-2">
                                     <div class="row justify-content-between mt-2 mb-2">
                                         <div class="col-6">
@@ -57,6 +58,9 @@ $title = "Unit";
                                         <?php endif; ?>
                                     </a>
                                 </div>
+                            <?php }
+                            if (empty($unit["id"])) { ?>
+                                <?php include_once "pages/error/404.php" ?>
                             <?php } ?>
 
 

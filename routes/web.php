@@ -3,10 +3,13 @@ $pages = @$_GET['pages'];
 $act = @$_GET['act'];
 
 switch ($pages) {
+        // DASHBOARD
     case "dashboard":
-    case "":
-        include "pages/main/index.php";
+        if ($act == "") {
+            include "pages/main/index.php";
+        }
         break;
+        // UNIT
     case "unit":
         if ($act == "") {
             include "pages/unit/index.php";
@@ -24,6 +27,25 @@ switch ($pages) {
             include "pages/unit/delete-image-process.php";
         }
         break;
+        // CUSTOMER
+    case "customer":
+        if ($act == "") {
+            include "pages/customer/index.php";
+        } else if ($act == "create") {
+            include "pages/customer/create.php";
+        } else if ($act == "create-process") {
+            include "pages/customer/create-process.php";
+        } else if ($act == "create-image-process") {
+            include "pages/customer/create-image-process.php";
+        } else if ($act == "show") {
+            include "pages/customer/show.php";
+        } else if ($act == "delete") {
+            include "pages/customer/delete-process.php";
+        } else if ($act == "delete-image") {
+            include "pages/customer/delete-image-process.php";
+        }
+        break;
+        // ERROR
     default:
-        include "pages/error-page/404.php";
+        include "pages/error/404.php";
 }
