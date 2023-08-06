@@ -34,14 +34,16 @@ switch ($pages) {
             include "pages/customer/create.php";
         } else if ($act == "create-process") {
             include "pages/customer/create-process.php";
-        } else if ($act == "create-image-process") {
-            include "pages/customer/create-image-process.php";
-        } else if ($act == "show") {
-            include "pages/customer/show.php";
-        } else if ($act == "delete") {
-            include "pages/customer/delete-process.php";
-        } else if ($act == "delete-image") {
-            include "pages/customer/delete-image-process.php";
+        }
+        break;
+        // USER
+    case "user":
+        if ($act == "") {
+            include "pages/user/index.php";
+        } else if ($act == "create") {
+            include "pages/user/create.php";
+        } else if ($act == "create-process") {
+            include "pages/user/create-process.php";
         }
         break;
         // ERROR

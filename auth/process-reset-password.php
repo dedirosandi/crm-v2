@@ -38,10 +38,10 @@ if (!$result) {
 
 // Generate password baru (tanpa enkripsi)
 // Karakter yang ingin Anda tambahkan ke dalam pool karakter yang digunakan
-$additionalCharacters = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+// $additionalCharacters = '!@#$%^&*()_+-=[]{}|;:,.<>?';
 
 // Pool karakter yang digunakan untuk mengacak password
-$characterPool = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" . $additionalCharacters;
+$characterPool = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 // Mengacak karakter dari pool
 $passwordBaru = substr(str_shuffle(str_repeat($characterPool, 8)), 0, 8);

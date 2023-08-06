@@ -72,7 +72,7 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] === "login") {
             </div>
             <div class="col-lg-7 d-none d-lg-block">
                 <div id="auth-right">
-
+                    <img src="assets/images/img/banner.png" class="img-fluid block" alt="...">
                 </div>
             </div>
         </div>

@@ -1,9 +1,10 @@
 <?php
-$title = "Detail Unit";
 $unit_is = $_GET["unit_is"];
 $GetUnit = query("SELECT tb_unit.*, COALESCE(tb_unit_gallery.id, '') AS gallery_id, COALESCE(tb_unit_gallery.image, '') AS gallery_image 
                  FROM tb_unit LEFT JOIN tb_unit_gallery ON tb_unit.id = tb_unit_gallery.unit_is 
           WHERE tb_unit.id = '$unit_is'");
+$title = 'Detail ' . $GetUnit[0]['type'];
+
 ?>
 <div class="page-heading">
     <div class="page-title">
