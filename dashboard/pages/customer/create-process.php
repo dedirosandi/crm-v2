@@ -15,11 +15,11 @@ $insert = mysqli_query($koneksi, "INSERT INTO tb_customer (no_order, date_order,
 if ($insert) {
     $_SESSION["notification"] = "Penambahan Customer berhasil !!!";
     $_SESSION["notification_color"] = "green";
-    header("location:?pages=unit");
+    header("location:?pages=customer");
     exit();
 } else {
     $_SESSION["notification"] = "Penambahan Customer gagal !!!";
     $_SESSION["notification_color"] = "red";
-    header("location:?pages=unit");
+    header("location:?pages=customer");
     exit();
 }
