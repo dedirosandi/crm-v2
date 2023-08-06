@@ -4,10 +4,9 @@ $act = @$_GET['act'];
 
 switch ($pages) {
         // DASHBOARD
+    case "":
     case "dashboard":
-        if ($act == "") {
-            include "pages/main/index.php";
-        }
+        include "pages/main/index.php";
         break;
         // UNIT
     case "unit":
