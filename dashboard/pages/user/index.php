@@ -42,7 +42,14 @@ $title = "User";
                                 <td><?= $user["name"]; ?></td>
                                 <td><?= $user["email"]; ?></td>
                                 <td><?= $user["user_is"]; ?></td>
-                                <td><?= $user["status_is"]; ?></td>
+                                <td>
+                                    <form action="?pages=user&act=status-process&id=<?= $user["id"]; ?>" method="post" id="status-form">
+                                        <select name="status_is" class="form-select status-select" onchange="submitForm()">
+                                            <option value="1" <?= $user["status_is"] == 1 ? 'selected' : ''; ?>>Aktif</option>
+                                            <option value="0" <?= $user["status_is"] == 0 ? 'selected' : ''; ?>>Nonaktif</option>
+                                        </select>
+                                    </form>
+                                </td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -52,3 +59,9 @@ $title = "User";
 
     </section>
 </div>
+
+<script>
+    function submitForm() {
+        document.getElementById("status-form").submit();
+    }
+</script>

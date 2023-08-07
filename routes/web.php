@@ -44,6 +44,8 @@ switch ($pages) {
             include "pages/user/create.php";
         } else if ($act == "create-process") {
             include "pages/user/create-process.php";
+        } else if ($act == "status-process") {
+            include "pages/user/status-process.php";
         }
         break;
         // ERROR
