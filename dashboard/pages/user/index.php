@@ -50,13 +50,10 @@ if (!isset($_SESSION["login"]) || $_SESSION["user_is"] !== "admin") {
                                 <td><?= $user["email"]; ?></td>
                                 <td><?= $user["user_is"]; ?></td>
                                 <td>
-                                    <form action="?pages=user&act=status-process" method="post" id="status-form">
-                                        <input type="hidden" name="id" value="<?= $user["id"]; ?>">
-                                        <select name="status_is" class="form-select status-select" onchange="submitForm()" <?= $user["user_is"] == 'admin' ? 'disabled' : ''; ?>>
-                                            <option value="1" <?= $user["status_is"] == 1 ? 'selected' : ''; ?>>Aktif</option>
-                                            <option value="0" <?= $user["status_is"] == 0 ? 'selected' : ''; ?>>Nonaktif</option>
-                                        </select>
-                                    </form>
+                                    <select name="status_is" class="form-select status-select" data-user-id="<?= $user["id"]; ?>" <?= $user["user_is"] == 'admin' ? 'disabled' : ''; ?>>
+                                        <option value="1" <?= $user["status_is"] == 1 ? 'selected' : ''; ?>>Aktif</option>
+                                        <option value="0" <?= $user["status_is"] == 0 ? 'selected' : ''; ?>>Nonaktif</option>
+                                    </select>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -68,8 +65,28 @@ if (!isset($_SESSION["login"]) || $_SESSION["user_is"] !== "admin") {
     </section>
 </div>
 
+
 <script>
-    function submitForm() {
-        document.getElementById("status-form").submit();
-    }
+    $(document).ready(function() {
+        $(".status-select").change(function() {
+            var id = $(this).data("user-id"); // Mengambil nilai data-user-id
+            var status = $(this).val();
+            // console.log(id)
+
+            $.ajax({
+                url: "?pages=user&act=status-process", // Ganti ini dengan URL yang sesuai
+                method: "POST",
+                data: {
+                    id: id,
+                    status_is: status
+                },
+                success: function(response) {
+                    location.reload();
+                },
+                error: function() {
+                    location.reload();
+                }
+            });
+        });
+    });
 </script>

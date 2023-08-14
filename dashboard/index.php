@@ -39,6 +39,8 @@ if (isset($_GET['title'])) {
     <link rel="stylesheet" href="../assets/extensions/simple-datatables/style.css">
     <link rel="stylesheet" href="../assets/css/pages/simple-datatables.css">
     <link rel="stylesheet" href="../assets/extensions/choices.js/public/assets/styles/choices.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 </head>
 
@@ -113,7 +115,7 @@ if (isset($_GET['title'])) {
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
     <script src="../assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
     <script src="../assets/js/pages/simple-datatables.js"></script>
     <script src="../assets/extensions/choices.js/public/assets/scripts/choices.js"></script>
