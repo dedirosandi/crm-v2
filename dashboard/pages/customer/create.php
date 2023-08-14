@@ -88,7 +88,7 @@ $generated_spr_number = generateSPRNumber();
                                             <label>Alamat Lengkap</label>
                                         </div>
                                         <div class="col-lg-9 form-group">
-                                            <textarea class="form-control" name="address" id="" cols="30" rows="10" required placeholder="Masukan alamat..."></textarea>
+                                            <textarea class="form-control" name="address" id="" cols="15" rows="10" required placeholder="Masukan alamat..."></textarea>
                                         </div>
 
                                         <div class="col-lg-3">

@@ -1,5 +1,12 @@
 <?php
 $title = "User";
+if (!isset($_SESSION["login"]) || $_SESSION["user_is"] !== "admin") {
+    // Jika belum login, redirect kembali ke halaman login
+    $_SESSION["notification_color"] = "red";
+    $_SESSION["notification"] = "Anda tidak diizinkan !!!";
+    header("location: ../");
+    exit;
+}
 ?>
 <div class="page-heading">
     <div class="page-title">
@@ -43,8 +50,9 @@ $title = "User";
                                 <td><?= $user["email"]; ?></td>
                                 <td><?= $user["user_is"]; ?></td>
                                 <td>
-                                    <form action="?pages=user&act=status-process&id=<?= $user["id"]; ?>" method="post" id="status-form">
-                                        <select name="status_is" class="form-select status-select" onchange="submitForm()">
+                                    <form action="?pages=user&act=status-process" method="post" id="status-form">
+                                        <input type="hidden" name="id" value="<?= $user["id"]; ?>">
+                                        <select name="status_is" class="form-select status-select" onchange="submitForm()" <?= $user["user_is"] == 'admin' ? 'disabled' : ''; ?>>
                                             <option value="1" <?= $user["status_is"] == 1 ? 'selected' : ''; ?>>Aktif</option>
                                             <option value="0" <?= $user["status_is"] == 0 ? 'selected' : ''; ?>>Nonaktif</option>
                                         </select>

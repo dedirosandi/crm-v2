@@ -1,5 +1,12 @@
 <?php
 $title = "Form Tambah User";
+if (!isset($_SESSION["login"]) || $_SESSION["user_is"] !== "admin") {
+    // Jika belum login, redirect kembali ke halaman login
+    $_SESSION["notification_color"] = "red";
+    $_SESSION["notification"] = "Anda tidak diizinkan !!!";
+    header("location: ../");
+    exit;
+}
 ?>
 <div class="page-heading">
     <div class="page-title">

@@ -50,10 +50,16 @@
                      <span>Customer</span>
                  </a>
              </li>
-             <li class="sidebar-item <?php if ($_GET['pages'] == "user" && "create-user") { ?> active <?php } else { ?> <?php } ?>">
+             <li class="sidebar-item <?php if ($_GET['pages'] == "user" && "create-user") { ?> active <?php } else { ?> <?php } ?>" <?= $_SESSION["user_is"] == 'sales' ? 'hidden' : ''; ?>>
                  <a href="?pages=user" class='sidebar-link'>
                      <i class="bi bi-person-circle"></i>
                      <span>User</span>
+                 </a>
+             </li>
+             <li class="sidebar-item <?php if ($_GET['pages'] == "survey") { ?> active <?php } else { ?> <?php } ?>">
+                 <a href="?pages=survey" class='sidebar-link'>
+                     <i class="bi bi-graph-down"></i>
+                     <span>Survey</span>
                  </a>
              </li>
          </ul>

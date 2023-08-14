@@ -1,6 +1,3 @@
-<?php
-$title = "Error 404";
-?>
 <div class="page-content">
     <div class="col-md-8 col-12 offset-md-2">
         <div class="text-center">

@@ -38,8 +38,8 @@ $title = "Customer";
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        $GetCustomer = query("SELECT 
+                        <?php if (!isset($_SESSION["login"]) || $_SESSION["user_is"] == "admin") { ?>
+                            <?php $GetCustomer = query("SELECT 
                         customer.no_order AS customer_no_order, 
                         customer.name AS customer_name, 
                         customer.address AS customer_address, 
@@ -50,8 +50,22 @@ $title = "Customer";
                         user.name AS user_name
                         FROM tb_customer customer
                         LEFT JOIN tb_unit unit ON customer.unit_is = unit.id
-                        LEFT JOIN tb_user user ON customer.salles_is = user.id");
-                        foreach ($GetCustomer as $customer) { ?>
+                        LEFT JOIN tb_user user ON customer.sales_is = user.id"); ?>
+                        <?php } elseif (!isset($_SESSION["login"]) || $_SESSION["user_is"] == "sales") { ?>
+                            <?php $GetCustomer = query("SELECT 
+                        customer.no_order AS customer_no_order, 
+                        customer.name AS customer_name, 
+                        customer.address AS customer_address, 
+                        customer.phone AS customer_phone, 
+                        customer.id_card AS customer_id_card, 
+                        customer.email AS customer_email, 
+                        unit.type AS unit_type, 
+                        user.name AS user_name
+                        FROM tb_customer customer
+                        LEFT JOIN tb_unit unit ON customer.unit_is = unit.id
+                        LEFT JOIN tb_user user ON customer.sales_is = user.id WHERE sales_is = $user_id"); ?>
+                        <?php } ?>
+                        <?php foreach ($GetCustomer as $customer) { ?>
                             <tr>
                                 <td><?= $customer["customer_no_order"]; ?></td>
                                 <td><?= $customer["customer_name"]; ?></td>

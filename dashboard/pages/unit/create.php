@@ -1,5 +1,12 @@
 <?php
 $title = "Form Tambah Unit";
+if (!isset($_SESSION["login"]) || $_SESSION["user_is"] !== "admin") {
+    // Jika belum login, redirect kembali ke halaman login
+    $_SESSION["notification_color"] = "red";
+    $_SESSION["notification"] = "Anda tidak diizinkan !!!";
+    header("location: ../");
+    exit;
+}
 ?>
 <div class="page-heading">
     <div class="page-title">
@@ -29,7 +36,7 @@ $title = "Form Tambah Unit";
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form action="?pages=unit&act=create-process" method="post" class="form form-horizontal">
+                            <form action="?pages=unit&act=create-process" method="post" class="form form-horizontal" enctype="multipart/form-data">
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-lg-3">
@@ -61,6 +68,12 @@ $title = "Form Tambah Unit";
                                         </div>
                                         <div class="col-lg-9 form-group">
                                             <input type="number" class="form-control" name="unit_stock" required>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label>Gambar Unit</label>
+                                        </div>
+                                        <div class="col-lg-9 form-group">
+                                            <input type="file" class="form-control" name="picture" required>
                                         </div>
 
 

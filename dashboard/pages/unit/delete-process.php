@@ -1,20 +1,15 @@
 <?php
 $unit_is = $_POST["unit_is"];
-$GetImage = query("SELECT * FROM tb_unit_gallery WHERE unit_is='$unit_is'");
+
+$GetPicture = query("SELECT * FROM tb_unit WHERE id='$unit_is'")[0];
 
 
-if ($GetImage) {
-    foreach ($GetImage as $image) {
-        if (file_exists("../storage/image-unit/" . $image["image"])) {
-            unlink("../storage/image-unit/" . $image["image"]);
-        }
-    }
-}
+unlink("../storage/image-unit/" . $GetPicture["picture"]);
+
 
 $delete_unit = mysqli_query($koneksi, "DELETE FROM tb_unit WHERE id = '$unit_is'");
-$delete_gallery = mysqli_query($koneksi, "DELETE FROM tb_unit_gallery WHERE unit_is='$unit_is'");
 
-if ($delete_unit && $delete_gallery) {
+if ($delete_unit) {
     $_SESSION["notification"] = "Penghapusan unit berhasil !!!";
     $_SESSION["notification_color"] = "green";
     header("location: ?pages=unit");

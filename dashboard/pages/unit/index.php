@@ -23,7 +23,10 @@ $title = "Unit";
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="?pages=unit&act=create" class="btn btn-outline-success"> Tambah Unit</a>
+                        <?php if (!isset($_SESSION["login"]) || $_SESSION["user_is"] !== "admin") { ?>
+                        <?php } else { ?>
+                            <a href="?pages=unit&act=create" class="btn btn-outline-success"> Tambah Unit</a>
+                        <?php } ?>
                     </div>
                     <div class="card-body">
                         <div class="row gallery">
@@ -31,9 +34,9 @@ $title = "Unit";
                             $GetUnit = query("SELECT * FROM tb_unit");
                             foreach ($GetUnit as $unit) {
                                 $unit_is = $unit["id"];
-                                $GetGallery = query("SELECT * FROM tb_unit_gallery WHERE unit_is ='$unit_is'");
-                                $status = $GetGallery["status"];
-                                $imageUrl = $GetGallery[0]["image"];
+                                // $GetGallery = query("SELECT * FROM tb_unit_gallery WHERE unit_is ='$unit_is'");
+                                $status = $unit["status"];
+                                $imageUrl = $unit["picture"];
                                 $iconImage = ($status === "sold") ? "sold.png" : "";
                                 $dummyImageUrl = "no-image.png"; // Ganti dengan URL gambar dummy sesuai kebutuhan
 
@@ -45,10 +48,14 @@ $title = "Unit";
                                             <b><?= $unit["type"]; ?> </b>
                                         </div>
                                         <div class="col-6 col-sm-6 equal-width">
-                                            <form id="logout-form" action="?pages=unit&act=delete" method="post">
-                                                <input name="unit_is" class="form-control form-control-lg" type="text" value="<?= $unit["id"]; ?>" hidden>
-                                                <input class='btn btn-block btn-sm btn-danger' type="button" value="X" onclick="showConfirmation()">
-                                            </form>
+                                            <?php if (!isset($_SESSION["login"]) || $_SESSION["user_is"] !== "admin") { ?>
+
+                                            <?php   } else { ?>
+                                                <form id="logout-form" action="?pages=unit&act=delete" method="post">
+                                                    <input name="unit_is" class="form-control form-control-lg" type="text" value="<?= $unit["id"]; ?>" hidden>
+                                                    <input class='btn btn-block btn-sm btn-danger' type="button" value="X" onclick="showConfirmation()">
+                                                </form>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                     <a href="?pages=unit&act=show&unit_is=<?= $unit["id"]; ?>" class="image-container">

@@ -1,6 +1,7 @@
 <?php
 // Memulai session
 session_start();
+$user_id = $_SESSION["id"];
 require_once "../env/connection.php";
 
 // Cek apakah pengguna sudah login (sesi login aktif)
@@ -57,16 +58,6 @@ if (isset($_GET['title'])) {
             <!-- routes -->
             <?php require_once "../routes/web.php" ?>
 
-            <footer>
-                <div class="footer clearfix mb-0 text-muted">
-                    <div class="float-start">
-                        <p>2021 &copy; Mazer</p>
-                    </div>
-                    <div class="float-end">
-                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a href="https://saugi.me">Saugi</a></p>
-                    </div>
-                </div>
-            </footer>
         </div>
     </div>
     <script src="../assets/js/bootstrap.js"></script>

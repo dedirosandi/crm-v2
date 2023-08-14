@@ -48,6 +48,18 @@ switch ($pages) {
             include "pages/user/status-process.php";
         }
         break;
+        // SURVEY
+    case "survey":
+        if ($act == "") {
+            include "pages/survey/index.php";
+        } else if ($act == "create") {
+            include "pages/survey/create.php";
+        } else if ($act == "create-process") {
+            include "pages/survey/create-process.php";
+        } else if ($act == "status-process") {
+            include "pages/survey/status-process.php";
+        }
+        break;
         // ERROR
     default:
         include "pages/error/404.php";

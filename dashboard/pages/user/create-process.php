@@ -1,7 +1,15 @@
 <?php
+if (!isset($_SESSION["login"]) || $_SESSION["user_is"] !== "admin") {
+    // Jika belum login, redirect kembali ke halaman login
+    $_SESSION["notification_color"] = "red";
+    $_SESSION["notification"] = "Anda tidak diizinkan !!!";
+    header("location: ../");
+    exit;
+}
 require_once "../env/PHPMailer/src/PHPMailer.php";
 require_once "../env/PHPMailer/src/SMTP.php";
 require_once "../env/PHPMailer/src/Exception.php";
+
 
 // Jika form register telah dikirim
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
