@@ -11,7 +11,7 @@ use PHPMailer\PHPMailer\Exception;
 function encryptUserID($userID)
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $key = substr(str_shuffle($characters), 0, 12);
+    $key = substr(str_shuffle($characters), 0, 8);
     return base64_encode($userID ^ $key);
 }
 
