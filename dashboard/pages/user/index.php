@@ -81,10 +81,16 @@ if (!isset($_SESSION["login"]) || $_SESSION["user_is"] !== "admin") {
                     status_is: status
                 },
                 success: function(response) {
-                    location.reload();
+                    $_SESSION["notification"] = "Perubahan Status berhasil !!!";
+                    $_SESSION["notification_color"] = "green";
+                    header("location:?pages=user");
+                    exit();
                 },
                 error: function() {
-                    location.reload();
+                    $_SESSION["notification"] = "Perubahan Status gagal !!!";
+                    $_SESSION["notification_color"] = "red";
+                    header("location:?pages=user");
+                    exit();
                 }
             });
         });
