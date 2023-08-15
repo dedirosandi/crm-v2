@@ -54,7 +54,7 @@ $end = $_GET["end"];
                         LEFT JOIN tb_user user ON customer.sales_is = user.id WHERE sales_is = '$user_id' AND date_order BETWEEN '$start' AND '$end'");
                             foreach ($GetCustomer as $customer) { ?>
                                 <tr>
-                                    <td><input class="form-check-input" type="checkbox" name="customer_is[]" value="<?= $customer["customer_id"]; ?>"> <?= $customer["customer_no_order"]; ?></td>
+                                    <td><input class="form-check-input" type="checkbox" name="to[]" value="<?= $customer["customer_email"]; ?>"> <?= $customer["customer_no_order"]; ?></td>
                                     <td><?= $customer["customer_name"]; ?></td>
                                     <td><?= $customer["customer_phone"]; ?></td>
                                     <td><?= $customer["unit_type"]; ?></td>

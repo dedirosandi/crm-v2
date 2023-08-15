@@ -7,14 +7,6 @@ require_once "../env/PHPMailer/src/Exception.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Enkripsi ID pengguna
-function encryptUserID($userID)
-{
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $key = substr(str_shuffle($characters), 0, 8);
-    return base64_encode($userID ^ $key);
-}
-
 $mail = new PHPMailer;
 $mail->isSMTP();
 $mail->Host       = 'smtp.gmail.com';
@@ -27,10 +19,10 @@ $mail->Port       = 587;
 $mail->setFrom('no-reply@skiddie.id', 'Skiddie ID - Survey');
 $mail->Subject = 'Survey Invitation';
 
-$selectedUsers = isset($_POST['customer_is']) ? $_POST['customer_is'] : [];
+$selectedUsers = isset($_POST['to']) ? $_POST['to'] : [];
 
 foreach ($selectedUsers as $selectedUser) {
-    $GetCustomer = query("SELECT * FROM tb_customer WHERE id = '$selectedUser'");
+    $GetCustomer = query("SELECT * FROM tb_customer WHERE email = '$selectedUser'");
 
     if ($GetCustomer) {
         $email = $GetCustomer[0]["email"];
@@ -38,10 +30,7 @@ foreach ($selectedUsers as $selectedUser) {
 
         $mail->addAddress($email, $name);
 
-        // Mengenkripsi ID pengguna menjadi kode panjang
-        $encryptedID = encryptUserID($selectedUser);
-        $surveyLink = "https://crm.skiddie-demo.com/survey?customer_id=" . urlencode($encryptedID);
-
+        $surveyLink = "https://skiddie.id/survey?to=" . $selectedUser;
         $mail->Body = "Hello $name,\n\nPlease take a moment to complete our survey: $surveyLink";
 
         try {
