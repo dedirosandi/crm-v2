@@ -33,7 +33,7 @@ if (isset($_GET['customer_id'])) {
     }
 
     // Di sini Anda dapat menggunakan $userID untuk mengambil data survei dari basis data
-    // Misalnya: $surveyData = query("SELECT * FROM tb_survey WHERE user_id = '$userID'");
+    $surveyData = query("SELECT * FROM tb_survey_responses WHERE customer_is = '$userID'");
 } else {
     echo "Invalid customer ID.";
     exit();
