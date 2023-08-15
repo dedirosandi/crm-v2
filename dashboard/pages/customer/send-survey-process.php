@@ -1,58 +1,53 @@
 <?php
-require_once "../../env/PHPMailer/src/PHPMailer.php";
-require_once "../../env/PHPMailer/src/SMTP.php";
-require_once "../../env/PHPMailer/src/Exception.php";
+// session_start();
+require_once "../env/PHPMailer/src/PHPMailer.php";
+require_once "../env/PHPMailer/src/SMTP.php";
+require_once "../env/PHPMailer/src/Exception.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Inisialisasi PHPMailer
 $mail = new PHPMailer;
 $mail->isSMTP();
-$mail->Host       = 'smtp.gmail.com'; // Ganti dengan alamat SMTP server Anda
+$mail->Host       = 'smtp.gmail.com';
 $mail->SMTPAuth   = true;
-$mail->Username   = 'skiddie.id@gmail.com'; // Ganti dengan username email Anda
-$mail->Password   = 'zbjewozgaszkvjno'; // Ganti dengan password email Anda
-$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Ganti dengan metode enkripsi yang sesuai dengan server Anda
-$mail->Port       = 587; // Ganti dengan port SMTP server Anda
+$mail->Username   = 'skiddie.id@gmail.com';
+$mail->Password   = 'zbjewozgaszkvjno';
+$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+$mail->Port       = 587;
 
-// Set pengirim dan subjek email
-$mail->setFrom('skiddie.id@gmail.com', 'Skiddie ID - Survey'); // Alamat email dan nama pengirim
-$mail->Subject = 'Survey Invitation'; // Subjek email
+$mail->setFrom('no-reply@skiddie.id', 'Skiddie ID - Survey');
+$mail->Subject = 'Survey Invitation';
 
-// Ambil data pengguna yang terpilih melalui checkbox
 $selectedUsers = isset($_POST['customer_is']) ? $_POST['customer_is'] : [];
 
-// Loop untuk mengirim email ke masing-masing pengguna yang terpilih
 foreach ($selectedUsers as $selectedUser) {
-    // Ambil data pengguna berdasarkan ID
-    $GetCustomer = query("SELECT * FROM tb_customer WHERE id = '$selectedUser'"); // Ganti query sesuai dengan data pengguna
+    $GetCustomer = query("SELECT * FROM tb_customer WHERE id = '$selectedUser'");
 
     if ($GetCustomer) {
         $email = $GetCustomer[0]["email"];
         $name = $GetCustomer[0]["name"];
 
-        // Set alamat email penerima dan nama penerima
         $mail->addAddress($email, $name);
 
-        // Isi konten email (misalnya link ke survei)
-        $surveyLink = "https://example.com/survey?customer_id=" . $selectedUser; // Ganti dengan URL survei Anda
+        $surveyLink = "https://skiddie.id/survey?customer_id=" . $selectedUser;
         $mail->Body = "Hello $name,\n\nPlease take a moment to complete our survey: $surveyLink";
 
-        // Coba kirim email dan tangani hasilnya
-        if ($mail->send()) {
-            $_SESSION["notification"] = "Berhasil mengirim survey kepada beberapa customer.";
+        try {
+            if (!$mail->send()) {
+                throw new Exception("Gagal mengirim undangan survei");
+            }
+
+            $_SESSION["notification"] = "Undangan survei telah dikirim";
             $_SESSION["notification_color"] = "green";
-        } else {
-            $_SESSION["notification"] = "Gagal mengirim survey. Pesan error: " . $mail->ErrorInfo;
+        } catch (Exception $e) {
+            $_SESSION["notification"] = "Terjadi kesalahan dalam mengirim email: " . $e->getMessage();
             $_SESSION["notification_color"] = "red";
         }
 
-        // Bersihkan alamat penerima untuk email berikutnya
         $mail->clearAddresses();
     }
 }
 
-// Redirect ke halaman customer setelah pengiriman
-header("location:?pages=customer");
+header("Location: ?pages=customer");
 exit();
