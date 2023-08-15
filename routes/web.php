@@ -36,6 +36,8 @@ switch ($pages) {
             include "pages/customer/create-process.php";
         } else if ($act == "show-filter") {
             include "pages/customer/show-filter.php";
+        } else if ($act == "send-survey") {
+            include "pages/customer/send-survey-process.php";
         }
         break;
         // USER
