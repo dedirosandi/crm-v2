@@ -4,9 +4,10 @@ require_once "../../env/PHPMailer/src/SMTP.php";
 require_once "../../env/PHPMailer/src/Exception.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 // Inisialisasi PHPMailer
-$mail = new PHPMailer(true);
+$mail = new PHPMailer;
 $mail->isSMTP();
 $mail->Host       = 'smtp.gmail.com'; // Ganti dengan alamat SMTP server Anda
 $mail->SMTPAuth   = true;
@@ -18,7 +19,6 @@ $mail->Port       = 587; // Ganti dengan port SMTP server Anda
 // Set pengirim dan subjek email
 $mail->setFrom('skiddie.id@gmail.com', 'Skiddie ID - Survey'); // Alamat email dan nama pengirim
 $mail->Subject = 'Survey Invitation'; // Subjek email
-
 
 // Ambil data pengguna yang terpilih melalui checkbox
 $selectedUsers = isset($_POST['customer_is']) ? $_POST['customer_is'] : [];
@@ -32,7 +32,6 @@ foreach ($selectedUsers as $selectedUser) {
         $email = $GetCustomer[0]["email"];
         $name = $GetCustomer[0]["name"];
 
-
         // Set alamat email penerima dan nama penerima
         $mail->addAddress($email, $name);
 
@@ -40,20 +39,20 @@ foreach ($selectedUsers as $selectedUser) {
         $surveyLink = "https://example.com/survey?customer_id=" . $selectedUser; // Ganti dengan URL survei Anda
         $mail->Body = "Hello $name,\n\nPlease take a moment to complete our survey: $surveyLink";
 
-        // Kirim email
-        if (!$mail->send()) {
-            $_SESSION["notification"] = "Gagal !!!";
-            $_SESSION["notification_color"] = "red";
-            header("location:?pages=customer");
-            exit();
-        } else {
-            $_SESSION["notification"] = "Berhasil !!!";
+        // Coba kirim email dan tangani hasilnya
+        if ($mail->send()) {
+            $_SESSION["notification"] = "Berhasil mengirim survey kepada beberapa customer.";
             $_SESSION["notification_color"] = "green";
-            header("location:?pages=customer");
-            exit();
+        } else {
+            $_SESSION["notification"] = "Gagal mengirim survey. Pesan error: " . $mail->ErrorInfo;
+            $_SESSION["notification_color"] = "red";
         }
 
         // Bersihkan alamat penerima untuk email berikutnya
         $mail->clearAddresses();
     }
 }
+
+// Redirect ke halaman customer setelah pengiriman
+header("location:?pages=customer");
+exit();
