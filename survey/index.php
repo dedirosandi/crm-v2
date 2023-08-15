@@ -1,19 +1,9 @@
 <?php
 require_once "../env/connection.php"; // Sesuaikan dengan lokasi file koneksi Anda
 
-// Fungsi untuk mengenkripsi ID pengguna
-function encryptUserID($userID)
-{
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $key = substr(str_shuffle($characters), 0, 8);
-    return base64_encode($userID ^ $key);
-}
-
 // Fungsi untuk mendekripsi ID pengguna
-function decryptUserID($encryptedID)
+function decryptUserID($encryptedID, $key)
 {
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $key = substr(str_shuffle($characters), 0, 8);
     $userID = base64_decode($encryptedID);
     return $userID ^ $key;
 }
@@ -23,7 +13,8 @@ if (isset($_GET['customer_id'])) {
     $encryptedID = $_GET['customer_id'];
 
     // Mendekripsi ID pengguna
-    $userID = decryptUserID(urldecode($encryptedID));
+    $key = substr(str_shuffle('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 8);
+    $userID = decryptUserID(urldecode($encryptedID), $key);
 
     // Pengecekan apakah ID pengguna ada di tabel tb_customer
     $customerData = query("SELECT * FROM tb_customer WHERE id = '$userID'");
