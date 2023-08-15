@@ -7,6 +7,14 @@ require_once "../env/PHPMailer/src/Exception.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+// Enkripsi ID pengguna
+function encryptUserID($userID)
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $key = substr(str_shuffle($characters), 0, 12);
+    return base64_encode($userID ^ $key);
+}
+
 $mail = new PHPMailer;
 $mail->isSMTP();
 $mail->Host       = 'smtp.gmail.com';
@@ -30,7 +38,10 @@ foreach ($selectedUsers as $selectedUser) {
 
         $mail->addAddress($email, $name);
 
-        $surveyLink = "https://skiddie.id/survey?customer_id=" . $selectedUser;
+        // Mengenkripsi ID pengguna menjadi kode panjang
+        $encryptedID = encryptUserID($selectedUser);
+        $surveyLink = "https://crm.skiddie-demo.com/survey?customer_id=" . urlencode($encryptedID);
+
         $mail->Body = "Hello $name,\n\nPlease take a moment to complete our survey: $surveyLink";
 
         try {
