@@ -25,7 +25,7 @@ if (isset($_GET['customer_id'])) {
     $userID = decryptUserID(urldecode($encryptedID), $key);
 
     // Pengecekan apakah ID pengguna ada di tabel tb_customer
-    $customerData = query("SELECT * FROM tb_customer WHERE id = '$userID'")[0];
+    $customerData = query("SELECT * FROM tb_customer WHERE id = '$userID'");
 
     if (!$customerData) {
         echo "Invalid customer ID.";
