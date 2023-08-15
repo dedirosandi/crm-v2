@@ -30,7 +30,7 @@ foreach ($selectedUsers as $selectedUser) {
 
         $mail->addAddress($email, $name);
 
-        $surveyLink = "https://skiddie.id/survey?to=" . $selectedUser;
+        $surveyLink = "https://crm.skiddie-demo.com/survey?to=" . $selectedUser;
         $mail->Body = "Hello $name,\n\nPlease take a moment to complete our survey: $surveyLink";
 
         try {
