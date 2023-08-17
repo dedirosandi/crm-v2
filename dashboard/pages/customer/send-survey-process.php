@@ -4,8 +4,6 @@ require_once "../env/PHPMailer/src/PHPMailer.php";
 require_once "../env/PHPMailer/src/SMTP.php";
 require_once "../env/PHPMailer/src/Exception.php";
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 
 include_once "../env/email-config.php";
 

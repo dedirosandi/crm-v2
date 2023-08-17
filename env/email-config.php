@@ -1,3 +1,7 @@
+<?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+
 $mail = new PHPMailer;
 $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
