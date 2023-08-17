@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
 
 require_once "../env/connection.php"; // Sesuaikan dengan lokasi file koneksi Anda
 
@@ -10,7 +10,7 @@ if (isset($_GET['to'])) {
 
 
     // Pengecekan apakah ID pengguna ada di tabel tb_customer
-    $customerData = query("SELECT * FROM tb_customer WHERE email = '$to'")[0];
+    $customerData = query("SELECT * FROM tb_customer WHERE email = '$to'");
 
     if (!$customerData) {
         echo "Invalid customer ID.";
