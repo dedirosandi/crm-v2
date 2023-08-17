@@ -16,14 +16,12 @@ switch ($pages) {
             include "pages/unit/create.php";
         } else if ($act == "create-process") {
             include "pages/unit/create-process.php";
-        } else if ($act == "create-image-process") {
-            include "pages/unit/create-image-process.php";
         } else if ($act == "show") {
             include "pages/unit/show.php";
         } else if ($act == "delete") {
             include "pages/unit/delete-process.php";
-        } else if ($act == "delete-image") {
-            include "pages/unit/delete-image-process.php";
+        } else if ($act == "edit-process") {
+            include "pages/unit/edit-process.php";
         }
         break;
         // CUSTOMER
