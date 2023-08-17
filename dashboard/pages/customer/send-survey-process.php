@@ -6,7 +6,7 @@ require_once "../env/PHPMailer/src/Exception.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-// config email new
+
 include_once "../env/email-config.php";
 
 $mail->setFrom('no-reply@skiddie.id', 'Skiddie ID - Survey');
