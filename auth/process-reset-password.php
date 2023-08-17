@@ -54,14 +54,8 @@ use PHPMailer\PHPMailer\Exception;
 $mail = new PHPMailer(true);
 
 try {
-    // Konfigurasi SMTP
-    $mail->isSMTP();
-    $mail->Host       = 'smtp.gmail.com'; // Ganti dengan alamat SMTP server Anda
-    $mail->SMTPAuth   = true;
-    $mail->Username   = 'skiddie.id@gmail.com'; // Ganti dengan username email Anda
-    $mail->Password   = 'zbjewozgaszkvjno'; // Ganti dengan password email Anda
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Ganti dengan metode enkripsi yang sesuai dengan server Anda
-    $mail->Port       = 587; // Ganti dengan port SMTP server Anda
+    // Konfigurasi email
+    require_once "../env/email-config.php";
 
     // Pengirim email
     $mail->setFrom('no-reply@skiddie.id', 'Reset Password'); // Ganti dengan email dan nama Anda

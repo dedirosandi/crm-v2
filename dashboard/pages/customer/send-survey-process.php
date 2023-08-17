@@ -7,14 +7,8 @@ require_once "../env/PHPMailer/src/Exception.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-$mail = new PHPMailer;
-$mail->isSMTP();
-$mail->Host       = 'smtp.gmail.com';
-$mail->SMTPAuth   = true;
-$mail->Username   = 'skiddie.id@gmail.com';
-$mail->Password   = 'zbjewozgaszkvjno';
-$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-$mail->Port       = 587;
+// email-config
+require_once "../env/email-config.php";
 
 $mail->setFrom('no-reply@skiddie.id', 'Skiddie ID - Survey');
 $mail->Subject = 'Survey Invitation';
