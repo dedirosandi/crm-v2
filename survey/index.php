@@ -48,7 +48,7 @@ $surveyData = query("SELECT * FROM tb_survey_responses WHERE customer_is = '$cus
         }
 
         .survey-container label {
-            color: #007bff;
+            /* color: #007bff; */
             font-weight: bold;
         }
 
@@ -69,34 +69,218 @@ $surveyData = query("SELECT * FROM tb_survey_responses WHERE customer_is = '$cus
 
 <body>
     <div class="container survey-container">
-        <h3>Survey Form</h3>
         <?php if (!$customerData) { ?>
             <div class="text-center">
-                <h5>Undangan ini bukan untuk anda</h5>
+                <h5>404</h5>
             </div>
         <?php } else { ?>
             <?php if (!$surveyData) { ?>
+                <h3>Survey Form</h3>
                 <form method="post">
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                        <label for="name" class="form-label">Pengalaman kunjungan anda ke martketing gallery</label>
+                        <div class="form-check">
+                            <input class="form-check-input" value="1" type="radio" name="pengalaman_kunjungan" id="pengalaman_kunjungan1" required>
+                            <label class="form-check-label" for="pengalaman_kunjungan1">
+                                Buruk 😨
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="2" type="radio" name="pengalaman_kunjungan" id="pengalaman_kunjungan2" required>
+                            <label class="form-check-label" for="pengalaman_kunjungan2">
+                                Cukup 😐
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="3" type="radio" name="pengalaman_kunjungan" id="pengalaman_kunjungan3" required>
+                            <label class="form-check-label" for="pengalaman_kunjungan3">
+                                Baik 🙂
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="4" type="radio" name="pengalaman_kunjungan" id="pengalaman_kunjungan4" required>
+                            <label class="form-check-label" for="pengalaman_kunjungan4">
+                                Terkesan 😊
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="5" type="radio" name="pengalaman_kunjungan" id="pengalaman_kunjungan4" required>
+                            <label class="form-check-label" for="pengalaman_kunjungan4">
+                                Sangat Memuaskan 🥰
+                            </label>
+                        </div>
                     </div>
+
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <label for="name" class="form-label">Kenyamanan & kebersihan martketing gallery</label>
+                        <div class="form-check">
+                            <input class="form-check-input" value="1" type="radio" name="kenyamanan_kebersihan" id="kenyamanan_kebersihan1" required>
+                            <label class="form-check-label" for="kenyamanan_kebersihan1">
+                                Buruk 😨
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="2" type="radio" name="kenyamanan_kebersihan" id="kenyamanan_kebersihan2" required>
+                            <label class="form-check-label" for="kenyamanan_kebersihan2">
+                                Cukup 😐
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="3" type="radio" name="kenyamanan_kebersihan" id="kenyamanan_kebersihan3" required>
+                            <label class="form-check-label" for="kenyamanan_kebersihan3">
+                                Baik 🙂
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="4" type="radio" name="kenyamanan_kebersihan" id="kenyamanan_kebersihan4" required>
+                            <label class="form-check-label" for="kenyamanan_kebersihan4">
+                                Terkesan 😊
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="5" type="radio" name="kenyamanan_kebersihan" id="kenyamanan_kebersihan4" required>
+                            <label class="form-check-label" for="kenyamanan_kebersihan4">
+                                Sangat Memuaskan 🥰
+                            </label>
+                        </div>
                     </div>
+
                     <div class="mb-3">
-                        <label for="age" class="form-label">Age</label>
-                        <input type="number" class="form-control" id="age" name="age" required>
+                        <label for="name" class="form-label">informasi tentang properti di martketing gallery</label>
+                        <div class="form-check">
+                            <input class="form-check-input" value="1" type="radio" name="informasi_properti" id="informasi_properti1" required>
+                            <label class="form-check-label" for="informasi_properti1">
+                                Buruk 😨
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="2" type="radio" name="informasi_properti" id="informasi_properti2" required>
+                            <label class="form-check-label" for="informasi_properti2">
+                                Cukup 😐
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="3" type="radio" name="informasi_properti" id="informasi_properti3" required>
+                            <label class="form-check-label" for="informasi_properti3">
+                                Baik 🙂
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="4" type="radio" name="informasi_properti" id="informasi_properti4" required>
+                            <label class="form-check-label" for="informasi_properti4">
+                                Terkesan 😊
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="5" type="radio" name="informasi_properti" id="informasi_properti4" required>
+                            <label class="form-check-label" for="informasi_properti4">
+                                Sangat Memuaskan 🥰
+                            </label>
+                        </div>
                     </div>
+
                     <div class="mb-3">
-                        <label for="gender" class="form-label">Gender</label>
-                        <select class="form-select" id="gender" name="gender" required>
-                            <option value="" disabled selected>Select your gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
+                        <label for="name" class="form-label">informasi navigasi peta ke martketing gallery</label>
+                        <div class="form-check">
+                            <input class="form-check-input" value="1" type="radio" name="navigasi_peta" id="navigasi_peta1" required>
+                            <label class="form-check-label" for="navigasi_peta1">
+                                Buruk 😨
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="2" type="radio" name="navigasi_peta" id="navigasi_peta2" required>
+                            <label class="form-check-label" for="navigasi_peta2">
+                                Cukup 😐
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="3" type="radio" name="navigasi_peta" id="navigasi_peta3" required>
+                            <label class="form-check-label" for="navigasi_peta3">
+                                Baik 🙂
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="4" type="radio" name="navigasi_peta" id="navigasi_peta4" required>
+                            <label class="form-check-label" for="navigasi_peta4">
+                                Terkesan 😊
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="5" type="radio" name="navigasi_peta" id="navigasi_peta4" required>
+                            <label class="form-check-label" for="navigasi_peta4">
+                                Sangat Memuaskan 🥰
+                            </label>
+                        </div>
                     </div>
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Responsibilitas staff martketing gallery</label>
+                        <div class="form-check">
+                            <input class="form-check-input" value="1" type="radio" name="respons_staf" id="respons_staf1" required>
+                            <label class="form-check-label" for="respons_staf1">
+                                Buruk 😨
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="2" type="radio" name="respons_staf" id="respons_staf2" required>
+                            <label class="form-check-label" for="respons_staf2">
+                                Cukup 😐
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="3" type="radio" name="respons_staf" id="respons_staf3" required>
+                            <label class="form-check-label" for="respons_staf3">
+                                Baik 🙂
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="4" type="radio" name="respons_staf" id="respons_staf4" required>
+                            <label class="form-check-label" for="respons_staf4">
+                                Terkesan 😊
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="5" type="radio" name="respons_staf" id="respons_staf4" required>
+                            <label class="form-check-label" for="respons_staf4">
+                                Sangat Memuaskan 🥰
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Penjelasan sales martketing gallery tentang produk</label>
+                        <div class="form-check">
+                            <input class="form-check-input" value="1" type="radio" name="penjelasan_sales" id="penjelasan_sales1" required>
+                            <label class="form-check-label" for="penjelasan_sales1">
+                                Buruk 😨
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="2" type="radio" name="penjelasan_sales" id="penjelasan_sales2" required>
+                            <label class="form-check-label" for="penjelasan_sales2">
+                                Cukup 😐
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="3" type="radio" name="penjelasan_sales" id="penjelasan_sales3" required>
+                            <label class="form-check-label" for="penjelasan_sales3">
+                                Baik 🙂
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="4" type="radio" name="penjelasan_sales" id="penjelasan_sales4" required>
+                            <label class="form-check-label" for="penjelasan_sales4">
+                                Terkesan 😊
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="5" type="radio" name="penjelasan_sales" id="penjelasan_sales4" required>
+                            <label class="form-check-label" for="penjelasan_sales4">
+                                Sangat Memuaskan 🥰
+                            </label>
+                        </div>
+                    </div>
+
                     <div class="mb-3">
                         <label for="feedback" class="form-label">Feedback</label>
                         <textarea class="form-control" id="feedback" name="feedback" rows="3" required></textarea>
